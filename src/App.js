@@ -6,7 +6,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-          <Route path="/" element={<HomePage/>}></Route>
+          <Route path="/movie-app" element={<HomePage/>}></Route>
           <Route path="/favorite" element={<FavoritePage/>}></Route>        
       </Routes>
     </BrowserRouter>
