@@ -1,0 +1,49 @@
+nav{
+    margin-top: -25px;
+    ul{
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 100%;
+        
+        li{
+            
+            width: 230px;
+            height: auto;
+            padding: 10px;
+            transition: all 1s ease;
+            font-size: 22px;
+            padding-bottom: 15px;
+            text-align: center;
+            display: block;
+            margin: auto;
+            margin-left: 10px;
+            margin-right: 10px;
+            &:hover{
+               background-color: rgba(0, 255, 255, 0.316); 
+               border-radius: 5px;
+               color: rgb(255, 255, 255);
+               transform: scale(1.1);
+            }
+            a{
+                text-decoration: none;
+                color: white;  
+                
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 900px) {
+    nav{
+        
+        ul{
+            list-style-type: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            margin-bottom: 10px;
+        }
+    }     
+  }

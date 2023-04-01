@@ -1,13 +1,16 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Movie from '../components/Movie';
+import NavBar from '../components/NavBar';
 
 const HomePage = () => {
-    let myquery="";
-    let [movies, setMovies]=useState([]);
-    let [searchInput, setSearchInput]=useState("");
-    const [data, setData] = useState([]);
+    let myquery="";// I put this because, setSearchInput don't change searchInput, i don't know why
 
+    let [movies, setMovies]=useState([]);
+    
+    const [data, setData] = useState([]);//for top or flop
+
+    let [searchInput, setSearchInput] = useState("");
     
     let [message, setMessage] = useState("");
     let [updated, setUpdated] = useState(message);
@@ -19,8 +22,7 @@ const HomePage = () => {
         setUpdated(message);
       };
         
-    
-    function fetchMovies(){
+    const fetchMovies=()=>{
         axios
         .get("https://api.themoviedb.org/3/search/movie?api_key=6e81bd4c6b9f42f902ea37cc4ff63238&query="+myquery)
         .then((response)=>setMovies(response.data.results));
@@ -29,30 +31,35 @@ const HomePage = () => {
     
     // useEffect(fetchMovies,[]);
     // faire ici le tri par ordre décroissant
-    // source : https://dev.to/ramonak/react-how-to-dynamically-sort-an-array-of-objects-using-the-dropdown-with-react-hooks-195p
-    const sortArray = () => {
-        const sorted = movies.sort((a, b) =>  b.vote_average- a.vote_average);
-        console.log(sorted);
-        setData(sorted);
-      };
+    // source : https://stackoverflow.com/questions/64255008/sort-descending-and-ascending-on-click
 
+    const [sortDirection, setSortDirection] = useState(false);
+    const sortTable = () => {
+        setSortDirection(!sortDirection);
+        const clonedOptions = movies.sort((a, b) => {
+            return sortDirection ? b.vote_average - a.vote_average : a.vote_average - b.vote_average;
+        })
+        setData(clonedOptions);
+    }
+    
     return (
         <div className="App">
             <header className="App-header">
-                <h1>Movies App</h1>
+                <div><NavBar/></div>
+                <h1>Mes films</h1>
                 <div>
                     <input 
                     type="text" 
                     id="searchInput" 
-                    onChange={(e)=>{setSearchInput(e.target.value);myquery= e.target.value;fetchMovies();}}
-                    // onChange={(e)=>{setSearchInput(e.target.value)}}
+                    onChange={(e)=>{myquery= e.target.value;fetchMovies();}}
+                    //onChange={(e)=>{setSearchInput(e.target.value)}}
                     
                     // onChange={handleChange}
                     // value={message}
                     placeholder="Tappez le nom du film"
                     />
                     <button id="searchButton" onClick={handleClick}>Rechercher</button>
-                    <button id="topFlopButton" onClick={(e) => sortArray(e.target.value)}>Trier par note</button>
+                    <button id="topFlopButton" onClick={(e) =>{sortTable(e.target.value);} }>Top ou Flop</button>
                 </div>
                 
                         
@@ -69,11 +76,6 @@ const HomePage = () => {
                         <Movie key={index} c={movie}/>
                     ))
                 }
-                    
-                
-                
-                
-                
             </section>
         </div>
     );

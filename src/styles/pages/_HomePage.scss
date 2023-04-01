@@ -2,7 +2,7 @@
     color: #61dafb;
   }
 .App{
-  
+    
     .App-header {
         
         display: flex;
@@ -12,6 +12,9 @@
         font-size: calc(10px + 2vmin);
         color: white;
         text-align: center;
+        h1{
+          margin-bottom: 50px;
+        }
         img{
             width: 100px;
             transition: all 1s ease;
@@ -24,6 +27,7 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             margin: 20px;
+            
             transition: all 1s ease;
             &:hover{
                 color: #ffffff;
@@ -36,6 +40,8 @@
             border-radius: 5px;
             margin-bottom: 20px;
             border: 2px solid #61dafb;
+            
+            
         }   
         button{
             padding: 15px;
@@ -45,11 +51,14 @@
             border: 2px solid #61dafb;
             background-color: #000000;
             color: #61dafb;
+            transition: all 1s ease;
+            transform: scale(1);
             &:hover{
               background-color: #61dafb;
               color: #000000;
-              
+              transform: scale(1.1);
             }
+            
         }
     }
     .movies-container{
