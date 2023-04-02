@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Favoris = ({c}) => {
+const Favoris = () => {
     
     return (
         <div className='lmj-cart'>

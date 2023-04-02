@@ -65,11 +65,19 @@ const HomePage = () => {
         }
     }
 
+    let l=[];
+    if(allLikes!=0){
+        l=allLikes;
+    }
+
     
     return (
         <div className="App">
             <header className="App-header">
-                <div><NavBar/></div>
+                <div>
+                    
+                    <NavBar l={l}/>
+                </div>
                 <h1>Mes films</h1>
                 <div>
                     <input 
