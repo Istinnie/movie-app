@@ -54,6 +54,20 @@
                 height: 20px;
             
             }  
+            button{
+                background-color: black;
+                color: white;
+                border: none;
+                font-size: 14px;
+                img{
+                    margin: 0 10px -5px 0;
+                }
+                &:hover{
+                    color: #61dafb;
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
+            }
         } 
         div{
             

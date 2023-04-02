@@ -41,6 +41,30 @@ const HomePage = () => {
         })
         setData(clonedOptions);
     }
+
+    // for like or dislike
+    let [likes, setLikes] = useState([]);
+    const [allLikes, setAllLikes] = useState([]);
+
+    
+    if(likes!=0){
+        const exists = allLikes.find(p => p.id === likes);
+        if (!exists){
+            allLikes.push({
+                id: likes
+            });
+        }else{
+            // delete doublon ne marche pas
+            
+            // const newArr = allLikes.filter(object => {
+            //     return object.name !== likes;
+            //   });
+            // allLikes.filter(object =>object.name === likes);
+            
+            // console.log(newArr);
+        }
+    }
+
     
     return (
         <div className="App">
@@ -61,11 +85,19 @@ const HomePage = () => {
                     <button id="searchButton" onClick={handleClick}>Rechercher</button>
                     <button id="topFlopButton" onClick={(e) =>{sortTable(e.target.value);} }>Top ou Flop</button>
                 </div>
-                
+                <div>
+                    ID favoris : 
+                        {allLikes.map(allLike => (
+                         <span> {allLike.id} - </span>
+                        ))}
+            
+                    
+                </div>
                         
             </header>
             <section className="movies-container">
                 {
+                    
                     movies
                     .filter((movie)=>
                         movie.overview
@@ -73,7 +105,7 @@ const HomePage = () => {
                         .includes(searchInput.toLowerCase())
                     )
                     .map((movie,index)=>(
-                        <Movie key={index} c={movie}/>
+                        <Movie key={index} c={movie} likes={likes} setLikes={setLikes} />
                     ))
                 }
             </section>
