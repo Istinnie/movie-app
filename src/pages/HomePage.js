@@ -93,14 +93,14 @@ const HomePage = () => {
                     <button id="searchButton" onClick={handleClick}>Rechercher</button>
                     <button id="topFlopButton" onClick={(e) =>{sortTable(e.target.value);} }>Top ou Flop</button>
                 </div>
-                <div>
+                {/* <div>
                     ID favoris : 
                         {allLikes.map(allLike => (
                          <span> {allLike.id} - </span>
                         ))}
             
                     
-                </div>
+                </div> */}
                         
             </header>
             <section className="movies-container">
