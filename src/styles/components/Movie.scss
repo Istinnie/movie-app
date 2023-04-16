@@ -9,6 +9,14 @@
     background-color: #000000;
     transition: all 1s ease;
     transform: scale(1);
+    .likeIcon{
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        &:hover{
+            color: #61dafb;
+        }
+    }
     &:hover{
         z-index: 1;
         transform: scale(1.1);

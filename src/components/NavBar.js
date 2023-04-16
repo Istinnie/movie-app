@@ -14,6 +14,7 @@ const NavBar = ({l}) => {
     return (
         <nav>
             <ul>
+                {/* we can use NavLink */}
                 <li><Link to="/movie-app">Accueil</Link></li>
                 <li >
                     

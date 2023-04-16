@@ -43,7 +43,7 @@
             
             
         }   
-        button{
+        button,input[type="submit"]{
             padding: 15px;
             font-size: 18px;
             border-radius: 5px;
@@ -53,6 +53,7 @@
             color: #61dafb;
             transition: all 1s ease;
             transform: scale(1);
+            cursor: pointer;
             &:hover{
               background-color: #61dafb;
               color: #000000;
